@@ -1,0 +1,27 @@
+{% extends 'movies/base.html' %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h1 class="text-xl font-semibold mb-4">🎬 Choisissez un film pour voir les recommandations similaires</h1>
+        <form method="get" class="flex flex-col gap-4">
+            <label for="movie_title" class="text-lg">Film :</label>
+
+            <!-- 🔍 Input avec autocompletion -->
+            <input list="movie_titles" name="movie_title" id="movie_title"
+                   class="p-2 border border-gray-300 rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                   placeholder="Tapez le nom d’un film...">
+
+            <!-- 🎯 Datalist avec titres -->
+            <datalist id="movie_titles">
+                {% for title in movies %}
+                    <option value="{{ title }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <button type="submit"
+                    class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 transition duration-300 ease-in-out">
+                Voir les recommandations
+            </button>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'movies/base.html' %}
+
+{% block title %}Films recommandés{% endblock %}
+
+{% block content %}
+    <h1>🎬 Films recommandés :</h1>
+
+    {% if selected_title %}
+        <p>Films similaires à <strong>"{{ selected_title }}"</strong> :</p>
+    {% endif %}
+
+    {% if recommended_movies %}
+        <div class="movie-grid">
+            {% for movie in recommended_movies %}
+                <div class="movie">
+                    {% if movie.poster_url %}
+                        <img src="{{ movie.poster_url }}" alt="{{ movie.title }}">
+                    {% endif %}
+                    <h3>{{ movie.title }}</h3>
+                    {% if movie.description %}
+                        <p>{{ movie.description }}</p>
+                    {% endif %}
+                    {% if movie.avg_rating %}
+                        <p>Note moyenne : {{ movie.avg_rating|floatformat:1 }} ⭐</p>
+                    {% elif movie.rating %}
+                        <p>Note : {{ movie.rating|floatformat:1 }} ⭐</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Aucun film trouvé.</p>
+    {% endif %}
+{% endblock %}

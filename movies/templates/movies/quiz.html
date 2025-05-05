@@ -1,0 +1,49 @@
+{% extends "movies/base.html" %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">🎯 Quiz de recommandations</h1>
+    <form method="post" class="bg-white p-4 rounded shadow" style="max-width: 600px; margin: 0 auto;">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label for="genre" class="form-label">Quel genre préfères-tu ?</label>
+            <select class="form-select" name="genre" id="genre" required>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Préféres-tu les films récents ou anciens ?</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="period" value="recent" id="recent" required>
+                <label class="form-check-label" for="recent">Récents (≥ 2015)</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="period" value="old" id="old" required>
+                <label class="form-check-label" for="old">Anciens (&lt; 2015)</label>
+            </div>
+        </div>
+
+        <div class="mb-4">
+            <label class="form-label">Préféres-tu les films populaires ou moins connus ?</label><br>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="popularity" value="popular" id="popular" required>
+                <label class="form-check-label" for="popular">Populaires</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="popularity" value="unpopular" id="unpopular" required>
+                <label class="form-check-label" for="unpopular">Moins connus</label>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Voir les recommandations 🎬</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
