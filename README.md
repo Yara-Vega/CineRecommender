@@ -1,3 +1,33 @@
+send me the report !!!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Movie Recommendation System 🎬✨
 
 This is a movie recommendation web app built with **Django** and **Python**, using **AI-based techniques** like content-based filtering and quiz-based personalization.
